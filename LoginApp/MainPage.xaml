@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginApp.MainPage">
+    <Border VerticalOptions="Center" HorizontalOptions="Center"
+                Margin="20" MaximumWidthRequest="360"
+            Stroke="Black" Background="AliceBlue"
+            StrokeShape="RoundRectangle 20">
+        <FlexLayout Direction="Column" Margin="50">
+            <Border StrokeShape="RoundRectangle 5" BackgroundColor="Beige" >
+                <Grid HeightRequest="50" ColumnDefinitions="Auto,Auto,*" 
+                      Margin="5">
+                    <Image Source="user_icon.png" WidthRequest="30" 
+                       HeightRequest="30" Margin="5,0"/>
+                    <Rectangle WidthRequest="2" Margin="0,5" BackgroundColor="Black" Grid.Column="1"/>
+                    <Entry x:Name="Username" Grid.Column="2" Placeholder="Username" PlaceholderColor="Green"/>
+                </Grid>
+            </Border>
+            <Border StrokeShape="RoundRectangle 5" BackgroundColor="Beige" Margin="0,5">
+                <Grid HeightRequest="50" ColumnDefinitions="Auto,Auto,*" 
+          Margin="5">
+                    <Image Source="lock_icon.jpg" WidthRequest="30" 
+           HeightRequest="30" Margin="5,0"/>
+                    <Rectangle WidthRequest="2" Margin="0,5" BackgroundColor="Black" Grid.Column="1"/>
+                    <Entry x:Name="Password" Grid.Column="2" IsPassword="True" Placeholder="Password" PlaceholderColor="Green"/>
+                </Grid>
+            </Border>
+            <FlexLayout Direction="Row" AlignItems="Stretch" Margin="0,5"
+                        HorizontalOptions="Fill">
+                <Button Text="Sign in" FlexLayout.Grow="1" Margin="0,0,5,0" Clicked="SignIn_Clicked"/>
+                <Button Text="Sign up" FlexLayout.Grow="1" Margin="5,0,0,0"/>
+            </FlexLayout>
+        </FlexLayout>
+
+        <Border.Shadow>
+            <Shadow Brush="Black" Offset="10,10" Radius="0" Opacity="0.5"/>
+        </Border.Shadow>
+    </Border>
+    
+
+</ContentPage>

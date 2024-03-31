@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Lesson02.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Lesson02"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Lesson02">
+    <TabBar>
+        <Tab Title="Home" Icon="https://picsum.photos/30" Route="MainPage">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+        </Tab>
+        <Tab Title="Orders" Icon="https://picsum.photos/30" Route="MainPage">
+            <ShellContent ContentTemplate="{DataTemplate local:OrderPage}"/>
+        </Tab>
+        <Tab Title="Profile" Icon="https://picsum.photos/30" Route="MainPage">
+            <ShellContent ContentTemplate="{DataTemplate local:ProfilePage}"/>
+        </Tab>
+        <!--<ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+        <ShellContent
+Title="Orders"
+ContentTemplate="{DataTemplate local:OrderPage}"
+Route="MainPage" />
+        <ShellContent
+Title="Profile"
+ContentTemplate="{DataTemplate local:ProfilePage}"
+Route="MainPage" />-->
+    </TabBar>
+</Shell>

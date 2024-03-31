@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lesson02.MainPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="About" Order="Secondary"/>
+        <ToolbarItem Text="Profile" Order="Secondary"/>
+        <ToolbarItem Text="Contact" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <Grid RowDefinitions="Auto,*,*,Auto,Auto,3*,Auto" RowSpacing="5" Margin="10,0">
+        <SearchBar Placeholder="Sausage, Coke, Frenchfries, ..."/>
+        <Grid Grid.Row="1" RowDefinitions="*,*" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8" RowSpacing="5">
+            <Image Source="https://picsum.photos/100" Grid.RowSpan="2"/>
+            <Label Text="Coke" Grid.Column="1" Grid.Row="0"/>
+            <Label Text="1 $" Grid.Column="1" Grid.Row="1" VerticalOptions="End"/>
+            <Stepper Minimum="1" Maximum="10" Increment="1" Grid.Column="2" 
+                     Grid.Row="0" Value="1" x:Name="MyNum" Margin="50,0,0,0" />
+            <Entry BindingContext="{x:Reference MyNum}" Text="{Binding Path=Value}" Grid.Row="0" Grid.Column="2" WidthRequest="30" HorizontalOptions="Start" />
+        </Grid>
+        <Grid Grid.Row="2" RowDefinitions="*,*" ColumnDefinitions="Auto,*,Auto" ColumnSpacing="8">
+            <Image Source="https://picsum.photos/100" Grid.RowSpan="2"/>
+            <Label Text="French fries" Grid.Column="1"/>
+            <Label Text="2 $" Grid.Column="1" Grid.Row="1" VerticalOptions="End"/>
+            <Stepper Minimum="1" Maximum="10" Increment="1" Grid.Column="2" Grid.Row="0" Value="1" x:Name="MyNum1" Margin="50,0,0,0" />
+            <Entry BindingContext="{x:Reference MyNum1}" Text="{Binding Path=Value}" Grid.Row="0" Grid.Column="2" WidthRequest="30" HorizontalOptions="Start" />
+        </Grid>
+        <Grid Grid.Row="3" ColumnDefinitions="*,50" RowDefinitions="Auto,*,*,*" ColumnSpacing="5">
+            <Rectangle Fill="Black" HeightRequest="5" Grid.ColumnSpan="2"/>
+            <Label Text="Subtotal:" HorizontalOptions="End" Grid.Row="1"/>
+            <Label Text="Tax:" HorizontalOptions="End" Grid.Row="2"/>
+            <Label Text="Total:" HorizontalOptions="End" Grid.Row="3"/>
+            <Label Text="3 $" Grid.Column="1" Grid.Row="1" HorizontalOptions="End"/>
+            <Label Text="0.3 $" Grid.Column="1" Grid.Row="2" HorizontalOptions="End"/>
+            <Label Text="3.3 $" Grid.Column="1" Grid.Row="3" HorizontalOptions="End"/>
+        </Grid>
+        <Label Text="Note" Grid.Row="4"/>
+        <Editor Grid.Row="5" Placeholder="2nd floor" Text="2nd floor"/>
+        <Grid Grid.Row="6" ColumnDefinitions="*,*,*">
+            <Button Text="Home"/>
+            <Button Text="Home" Grid.Column="1"/>
+            <Button Text="Home" Grid.Column="2"/>
+        </Grid>
+    </Grid>
+
+</ContentPage>

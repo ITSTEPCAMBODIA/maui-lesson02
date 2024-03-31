@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeyboardTrainer.MainPage"
+             >
+    <ContentPage.Resources>
+            <Style TargetType="Button" x:Key="Default">
+                <Setter Property="BackgroundColor" Value="Bisque"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="BorderColor" Value="Gray"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="BorderWidth" Value="1"/>
+            </Style>
+        </ContentPage.Resources>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,*,*,*,*,*,*">
+        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,*,*,*">
+            <HorizontalStackLayout>
+                <Label Text="Speed: "/>
+                <Label FontAttributes="Bold" Text="0"/>
+                <Label Text=" chars/min"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Grid.Column="1">
+                <Label Text="Fails: "/>
+                <Label FontAttributes="Bold" Text="0"/>
+            </HorizontalStackLayout>
+            <Grid ColumnDefinitions="Auto,Auto,*" 
+                  Grid.Column="2">
+                <Label Text="Difficulty: "/>
+                <Label FontAttributes="Bold" Grid.Column="1" 
+                       Text="5" x:Name="LblDifficulty"/>
+                <Slider Minimum="1" Maximum="5" Value="5"
+                        ValueChanged="Difficulty_ValueChanged"
+                        HorizontalOptions="Fill" x:Name="Difficulty"
+                        Grid.Column="2" Margin="10,0"/>
+            </Grid>
+            <HorizontalStackLayout Grid.Column="3">
+                <CheckBox IsChecked="True" VerticalOptions="Center"/>
+                <Label Text="Case Sensitive" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <!-- Row 1 -->
+            <Button Text="Start" Grid.Row="1" Grid.Column="2" x:Name="BtnStart" Clicked="BtnStart_Clicked"/>
+            <Button Text="Stop" Grid.Row="1" Grid.Column="3" x:Name="BtnStop" Clicked="BtnStop_Clicked"
+                    IsEnabled="False"/>
+        </Grid>
+        <Grid Grid.Row="4" RowDefinitions="*,*" ColumnDefinitions="Auto,*">
+            <FlexLayout Direction="Row" x:Name="FlexSample" JustifyContent="Start"/>
+            <Label Text="sdfsdfd" x:Name="LblSample" Grid.Column="1" FontFamily="Consolas"/>
+            <FlexLayout x:Name="FlexUserTyped" Grid.Row="1" Direction="Row" JustifyContent="Start"/>
+            <Editor Keyboard="Text" TextChanged="LblUserTyped_TextChanged" Text="" FontFamily="Consolas" Grid.Row="1" Grid.Column="1" x:Name="LblUserTyped"/>
+        </Grid>
+        <Grid ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,2*" RowSpacing="2" ColumnSpacing="2" Grid.Row="5">
+                <Button Text="`" Style="{StaticResource Default}" Grid.Column="0" BackgroundColor="PaleVioletRed" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="1" Style="{StaticResource Default}" Grid.Column="1" BackgroundColor="PaleVioletRed" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="2" Style="{StaticResource Default}" Grid.Column="2" BackgroundColor="PaleVioletRed" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="3" Style="{StaticResource Default}" Grid.Column="3" BackgroundColor="Yellow" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="4" Style="{StaticResource Default}" Grid.Column="4" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="5" Style="{StaticResource Default}" Grid.Column="5" BackgroundColor="LightBlue" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="6" Style="{StaticResource Default}" Grid.Column="6" BackgroundColor="LightBlue" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="7" Style="{StaticResource Default}" Grid.Column="7" BackgroundColor="MediumOrchid" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="8" Style="{StaticResource Default}" Grid.Column="8" BackgroundColor="MediumOrchid" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="9" Style="{StaticResource Default}" Grid.Column="9" BackgroundColor="PaleVioletRed" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="0" Style="{StaticResource Default}" Grid.Column="10" BackgroundColor="Yellow" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="-" Style="{StaticResource Default}" Grid.Column="11" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="=" Style="{StaticResource Default}" Grid.Column="12" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="Backspace" Style="{StaticResource Default}" Grid.Column="13" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+
+            </Grid>
+
+            <Grid ColumnDefinitions="1.5*,*,*,*,*,*,*,*,*,*,*,*,*,1.5*" RowSpacing="2" ColumnSpacing="2" Grid.Row="6">
+                <Button Text="Tap" Style="{StaticResource Default}" Grid.Column="0" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="q" Style="{StaticResource Default}" Grid.Column="1" BackgroundColor="PaleVioletRed" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="w" Style="{StaticResource Default}" Grid.Column="2" BackgroundColor="Yellow" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="e" Style="{StaticResource Default}" Grid.Column="3" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="r" Style="{StaticResource Default}" Grid.Column="4" BackgroundColor="LightBlue" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="t" Style="{StaticResource Default}" Grid.Column="5" BackgroundColor="LightBlue" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="y" Style="{StaticResource Default}" Grid.Column="6" BackgroundColor="MediumOrchid" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="u" Style="{StaticResource Default}" Grid.Column="7" BackgroundColor="MediumOrchid" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="i" Style="{StaticResource Default}" Grid.Column="8" BackgroundColor="PaleVioletRed" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="o" Style="{StaticResource Default}" Grid.Column="9" BackgroundColor="Yellow" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="p" Style="{StaticResource Default}" Grid.Column="10" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="[" Style="{StaticResource Default}" Grid.Column="11" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="]" Style="{StaticResource Default}" Grid.Column="12" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="\" Style="{StaticResource Default}" Grid.Column="13" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="2*,*,*,*,*,*,*,*,*,*,*,*,2*" RowSpacing="2" ColumnSpacing="2" Grid.Row="7">
+                <Button Text="Caps Lock" Style="{StaticResource Default}" Grid.Column="0" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="a" Style="{StaticResource Default}" Grid.Column="1" BackgroundColor="PaleVioletRed" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="s" Style="{StaticResource Default}" Grid.Column="2" BackgroundColor="Yellow" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="d" Style="{StaticResource Default}" Grid.Column="3" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="f" Style="{StaticResource Default}" Grid.Column="4" BackgroundColor="LightBlue" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="g" Style="{StaticResource Default}" Grid.Column="5" BackgroundColor="LightBlue" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="h" Style="{StaticResource Default}" Grid.Column="6" BackgroundColor="MediumOrchid" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="j" Style="{StaticResource Default}" Grid.Column="7" BackgroundColor="MediumOrchid" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="k" Style="{StaticResource Default}" Grid.Column="8" BackgroundColor="PaleVioletRed" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="l" Style="{StaticResource Default}" Grid.Column="9" BackgroundColor="Yellow" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text=";" Style="{StaticResource Default}" Grid.Column="10" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="'" Style="{StaticResource Default}" Grid.Column="11" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="ENTER" Style="{StaticResource Default}" Grid.Column="12" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="3*,*,*,*,*,*,*,*,*,*,*,3*" RowSpacing="2" ColumnSpacing="2" Grid.Row="8">
+                <Button Text="Shift" Style="{StaticResource Default}" Grid.Column="0" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="z" Style="{StaticResource Default}" Grid.Column="1" BackgroundColor="PaleVioletRed" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="x" Style="{StaticResource Default}" Grid.Column="2" BackgroundColor="Yellow" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="c" Style="{StaticResource Default}" Grid.Column="3" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="v" Style="{StaticResource Default}" Grid.Column="4" BackgroundColor="LightBlue" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="b" Style="{StaticResource Default}" Grid.Column="5" BackgroundColor="LightBlue" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="n" Style="{StaticResource Default}" Grid.Column="6" BackgroundColor="MediumOrchid" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="m" Style="{StaticResource Default}" Grid.Column="7" BackgroundColor="MediumOrchid" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="," Style="{StaticResource Default}" Grid.Column="8" BackgroundColor="PaleVioletRed" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="." Style="{StaticResource Default}" Grid.Column="9" BackgroundColor="Yellow" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="/" Style="{StaticResource Default}" Grid.Column="10" BackgroundColor="LightGreen" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="Shift" Style="{StaticResource Default}" Grid.Column="11" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="*,*,*,5*,*,*,*" RowSpacing="2" ColumnSpacing="2" Grid.Row="9">
+                <Button Text="Ctrl" Style="{StaticResource Default}" Grid.Column="0" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="Win" Style="{StaticResource Default}" Grid.Column="1" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="Alt" Style="{StaticResource Default}" Grid.Column="2" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="Space" Style="{StaticResource Default}" Grid.Column="3" BackgroundColor="LightSalmon" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="Alt" Style="{StaticResource Default}" Grid.Column="4" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="Win" Style="{StaticResource Default}" Grid.Column="5" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+                <Button Text="Ctrl" Style="{StaticResource Default}" Grid.Column="6" BackgroundColor="Gray" BorderColor="DimGray" BorderWidth="2"/>
+
+            </Grid>
+
+
+        </Grid>
+
+
+    </ContentPage>
