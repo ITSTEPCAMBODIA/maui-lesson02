@@ -24,6 +24,10 @@
                 Password.Text == "123")
             {
                 await Shell.Current.GoToAsync("///DashboardPage");
+            }else if (Username.Text == "teacher" &&
+                Password.Text == "123")
+            {
+                await Shell.Current.GoToAsync("///TeacherPage");
             }
             else
             {

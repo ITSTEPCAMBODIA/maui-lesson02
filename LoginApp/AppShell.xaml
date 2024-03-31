@@ -15,4 +15,8 @@
         Title="Dashboard for Student"
         ContentTemplate="{DataTemplate local:DashboardPage}"
         Route="DashboardPage" />
+    <ShellContent
+        Title="Dashboard for Teacher"
+        ContentTemplate="{DataTemplate local:TeacherPage}"
+        Route="TeacherPage" />
 </Shell>
