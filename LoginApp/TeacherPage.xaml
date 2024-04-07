@@ -3,13 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:LoginApp"
              x:Class="LoginApp.TeacherPage"
-             Title="TeacherPage">
+             Title="TeacherPage" x:Name="teacherPage">
     <ContentPage.BindingContext>
-        <local:QuestionBank/>
+        <local:QuestionBank/><!--Create object questionbank-->
     </ContentPage.BindingContext>
-    <FlexLayout>
-        <ListView ItemsSource="{Binding Sections}"/>
-        <Entry x:Name="SectionName"/>
+    <Grid ColumnDefinitions="*,*,*">
+        <CollectionView ItemsSource="{Binding Sections}" WidthRequest="200">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Name}"/>
+                        <Label Text="(Questions: "/>
+                        <Label Text="{Binding Questions.Count}" TextColor="Blue"/>
+                        <Label Text=")"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <FlexLayout BindableLayout.ItemsSource="{Binding Sections}" Grid.Column="1"
+                    AlignItems="Start" Wrap="Wrap">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Black" StrokeThickness="2" StrokeShape="RoundRectangle 10" Padding="10">
+                    <Grid RowDefinitions="*,*,*" ColumnDefinitions="Auto,*" BindingContext="{Binding}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Section_Tabbed"/>
+                            </Grid.GestureRecognizers>
+                        <Label Grid.ColumnSpan="2" Text="{Binding Name}"/>
+                        <Label Grid.Row="1" Text="Questions: "/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Questions.Count}"/>
+                        <Label Grid.Row="2" Text="Quizzes: "/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Quizzes.Count}"/>
+                    </Grid></Border>
+                </DataTemplate>
+            </BindableLayout.ItemTemplate>
+        </FlexLayout>
+        <FlexLayout Grid.Column="2">
+        <Entry x:Name="SectionName" Grid.Column="2"/>
         <Button Text="Add Section" Clicked="AddSection_Clicked"/>
-    </FlexLayout>
+        </FlexLayout>
+    </Grid>
 </ContentPage>

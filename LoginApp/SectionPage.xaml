@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LoginApp.SectionPage"
+             xmlns:local="clr-namespace:LoginApp"
+             Title="SectionPage">
+    <Grid RowDefinitions="*,Auto,*">
+        <ListView ItemsSource="{Binding Section.Questions}"/>
+        <Button Text="Add Question" Grid.Row="1" Clicked="AddQuestion_Clicked"/>
+        <ListView ItemsSource="{Binding Section.Quizzes}" Grid.Row="2"/>
+    </Grid>
+</ContentPage>

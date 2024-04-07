@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LoginApp"
+             x:Class="LoginApp.QuestionPage"
+             Title="QuestionPage">
+    <ContentPage.BindingContext>
+        <local:Question/>
+    </ContentPage.BindingContext>
+    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,*,Auto">
+        <Label Text="Title"/>
+        <Entry Grid.Column="1" Text="{Binding Title}"/>
+        <Label Text="Answers: " Grid.Row="1"/>
+        <CollectionView ItemsSource="{Binding Answers}" Grid.Row="2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        <CheckBox IsChecked="False"/>
+                        <Label Text="a."/>
+                        <Entry Text="{Binding}" MinimumWidthRequest="50"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="Add Answer" Grid.Row="3" Clicked="AddAnswer_Clicked"/>
+    </Grid>
+</ContentPage>

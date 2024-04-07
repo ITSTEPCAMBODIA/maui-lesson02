@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,9 @@ namespace LoginApp
 {
     public class Question
     {
+        public int Id { get; set; } = 0;
         public string Title { get; set; } = "Untitled";//2 + 3 = ?
-        public List<string> Answers { get; set; } = []; //a. 3
+        public ObservableCollection<string> Answers { get; set; } = []; //a. 3
                                                         //b. 4
                                                         //c. 5
                                                         //d. 6
@@ -22,12 +24,15 @@ namespace LoginApp
         public string Name { get; set; } = "Unnamed";//History, Geography, Biology, etc
         public List<Question> Questions { get; set; } = [];
         public List<Quiz> Quizzes { get; set; } = [];
+        public override string ToString() => $"Section: {Name}";
+        public int LastInsertId { get; set; } = 0;//Auto-Increment
     }
     public class QuestionBank
     {
         public List<Section> Sections { get; set; } = [];
         public List<Attempt> Attempts { get; set; } = [];
-        private static string FileName = @"D:\Work\2023\PTSD15\MAUI\Lesson02\Data.json";
+        private static string FileName = 
+            Path.Combine(FileSystem.AppDataDirectory, "Data.json");
         public static QuestionBank LoadFromFile() {
             if (!File.Exists(FileName)) return new QuestionBank();
             QuestionBank? bank = JsonConvert.DeserializeObject<QuestionBank>(

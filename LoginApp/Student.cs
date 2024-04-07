@@ -47,8 +47,8 @@ namespace LoginApp
     {
         public int Id { get; set; }
         public string Name { get; set; } = "Quiz001 Math";
-        public List<Question> Questions { get; set; } = [];
+        public List<Question> Questions { get; set; } = new();
         [Newtonsoft.Json.JsonIgnore]
-        public List<Attempt> Attempts { get; set; } = [];
+        public List<Attempt> Attempts { get; set; } = new();
     }
 }

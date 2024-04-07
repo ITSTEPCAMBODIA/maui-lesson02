@@ -19,4 +19,12 @@
         Title="Dashboard for Teacher"
         ContentTemplate="{DataTemplate local:TeacherPage}"
         Route="TeacherPage" />
+    <ShellContent
+        Title="Section"
+        ContentTemplate="{DataTemplate local:SectionPage}"
+        Route="SectionPage" />
+    <ShellContent
+        Title="Section"
+        ContentTemplate="{DataTemplate local:QuestionPage}"
+        Route="QuestionPage" />
 </Shell>
